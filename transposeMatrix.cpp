@@ -1,8 +1,6 @@
 #include<iostream>
 
 
-////////////////////////
-
 int* createMatrix(const int& n , const int& m) {
     int* matrix = new int[n * m];
     for (int i = 0; i < n * m; ++i) {
