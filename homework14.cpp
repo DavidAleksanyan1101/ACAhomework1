@@ -2,7 +2,6 @@
 
 
 
-
 class Matrix
 {
 public:
@@ -23,6 +22,15 @@ public:
         }
     }
 
+    ~Matrix()
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+    }
+
     void transposeMatrix()
     {
         Matrix newMatrix(m , n);
@@ -33,12 +41,7 @@ public:
                 newMatrix.matrix[i][j] = matrix[j][i];
             }
         }
-        for (int i = 0; i < n; ++i)
-        {
-            delete matrix[i];
-        }
-        delete[] matrix;
-        matrix = newMatrix.matrix;
+        std::swap(matrix , newMatrix.matrix);
         std::swap(n , m);
     }
 
@@ -63,7 +66,7 @@ int main()
 {
     Matrix matrix1(6 , 3);
     matrix1.printMatrix();
-    std::cout<<std::endl;
+    std::cout << std::endl;
     matrix1.transposeMatrix();
     matrix1.printMatrix();
 
