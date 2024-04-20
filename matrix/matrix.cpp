@@ -22,6 +22,50 @@ public:
         }
     }
 
+    Matrix(const Matrix& M)
+    {
+        this->n = M.n;
+        this->m = M.m;
+        matrix = new int* [n];
+        for (int i = 0; i < n; ++i)
+        {
+            matrix[i] = new int[m];
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                matrix[i][j] = M.matrix[i][j];
+            }
+        }
+    }
+
+    Matrix& operator=(const Matrix& M)
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+
+        this->n = M.n;
+        this->m = M.m;
+        matrix = new int* [n];
+        for (int i = 0; i < n; ++i)
+        {
+            matrix[i] = new int[m];
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                matrix[i][j] = M.matrix[i][j];
+            }
+        }
+
+
+    }
+
     ~Matrix()
     {
         for (int i = 0; i < n; ++i)
@@ -67,7 +111,11 @@ int main()
     Matrix matrix1(6 , 3);
     matrix1.printMatrix();
     std::cout << std::endl;
-    matrix1.transposeMatrix();
-    matrix1.printMatrix();
+    // matrix1.transposeMatrix();
+    // matrix1.printMatrix();
+    Matrix matrix2;
+    matrix2 = matrix1;
+    matrix2.printMatrix();
 
+    return 0;
 }
