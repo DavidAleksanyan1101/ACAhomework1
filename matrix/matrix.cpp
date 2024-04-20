@@ -78,6 +78,29 @@ Matrix Matrix::operator+(const Matrix& M)
     return result;
 }
 
+Matrix Matrix::operator*(const Matrix& M)
+{
+    if (m != M.n)
+    {
+        std::cout << "Can't multiple that matrixes" << std::endl;
+        return Matrix();
+    }
+    Matrix result(n , M.m);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < M.m; ++j)
+        {
+            result.matrix[i][j] = 0;
+            for (int n = 0; n < m; ++n)
+            {
+                result.matrix[i][j] += matrix[i][n] * M.matrix[n][j];
+            }
+        }
+    }
+    return result;
+}
+
+
 
 Matrix::~Matrix()
 {

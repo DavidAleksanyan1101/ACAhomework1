@@ -9,6 +9,7 @@ public:
     Matrix(const Matrix& M);
     Matrix& operator=(const Matrix& M);
     Matrix operator+(const Matrix& M);
+    Matrix operator*(const Matrix& M);
     ~Matrix();
 
 public:
