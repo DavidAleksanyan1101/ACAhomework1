@@ -78,6 +78,24 @@ Matrix Matrix::operator+(const Matrix& M)
     return result;
 }
 
+Matrix Matrix::operator-(const Matrix& M)
+{
+    if (n != M.n || m != M.m)
+    {
+        std::cout << "Size of matrixes must be equal , returned empty matrix" << std::endl;
+        return Matrix();
+    }
+    Matrix result(n , m);
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < m; ++j)
+        {
+            result.matrix[i][j] = matrix[i][j] - M.matrix[i][j];
+        }
+    }
+    return result;
+}
+
 Matrix Matrix::operator*(const Matrix& M)
 {
     if (m != M.n)
