@@ -8,9 +8,9 @@ public:
     Matrix(const int& _n , const int& _m);
     Matrix(const Matrix& M);
     Matrix& operator=(const Matrix& M);
-    Matrix operator+(const Matrix& M);
-    Matrix operator-(const Matrix& M);
-    Matrix operator*(const Matrix& M);
+    const Matrix operator+(const Matrix& M);
+    const Matrix operator-(const Matrix& M);
+    const Matrix operator*(const Matrix& M);
     ~Matrix();
 
 public:
