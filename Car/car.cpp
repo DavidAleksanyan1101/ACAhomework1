@@ -11,8 +11,7 @@ Car::Car(const std::string& _model , const std::string& _color , const std::stri
     engine = new Engine(_type , _cylinders , _volume , _hp);
     gearbox = new Gearbox(gearType , gears);
 }
-Car::Car(const Car& c) : model(c.model) , color(c.color) , numberPlate(c.numberPlate) , year(c.year)
-{
+Car::Car(const Car& c) : model(c.model) , color(c.color) , numberPlate(c.numberPlate) , year(c.year) {
     engine = new Engine(*(c.engine));
     gearbox = new Gearbox(*(c.gearbox));
 };
@@ -31,12 +30,12 @@ void Car::printDetailedInfo() const
         std::cout << "There is no info about the engine and gearbox" << std::endl;
         return;
     }
-    std::cout << "Engine info" << std::endl;
+    std::cout<<"Engine info"<<std::endl;
     engine->printInfo();
-    std::cout << std::endl;
-    std::cout << "Gearbox info" << std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Gearbox info"<<std::endl;
     gearbox->printInfo();
-    std::cout << std::endl;
+    std::cout<<std::endl;
 }
 
 
