@@ -23,6 +23,11 @@ Parking::Parking(const Parking& p)
     }
 }
 
+Parking::~Parking()
+{
+    delete [] parkingPlace;
+}
+
 bool Parking::carIn(const Car& c)
 {
     bool status = false;

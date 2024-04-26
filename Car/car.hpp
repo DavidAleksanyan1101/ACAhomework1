@@ -5,6 +5,7 @@
 #include "gearbox.hpp"
 
 
+
 class Car
 {
 public:
@@ -12,11 +13,13 @@ public:
     Car(const std::string& _model , const std::string& _color , const std::string& _numberPlate , int _year);
     Car(const std::string& _model , const std::string& _color , const std::string& _numberPlate , int _year , const std::string& _type , const int& _cylinders , const int& _volume , const int& _hp , const std::string& gearType , const int& gears);
     Car(const Car& c);
-
+    ~Car();
 
 public:
     void printInfo()const;
     void printDetailedInfo()const;
+    void setEngine(const std::string& _type , const int& _cylinders , const int& _volume , const int& _hp );
+    void setGearbox(const std::string& gearType , const int& gears);
 
 private:
     std::string model;
@@ -26,6 +29,8 @@ private:
     Engine* engine = nullptr;
     Gearbox* gearbox = nullptr;
 };
+
+
 
 
 #endif // __car__

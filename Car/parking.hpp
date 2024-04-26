@@ -9,6 +9,7 @@ public:
     Parking() = default;
     Parking(const int& _capacity , const int& _price);
     Parking(const Parking& p);
+    ~Parking();
 public:
     bool carIn(const Car& c);
     bool carOut(const Car& c);

@@ -3,11 +3,11 @@ CXX := g++
 # Compiler flags
 CXXFLAGS := -std=c++11
 # Source files
-SOURCES := main.cpp car.cpp engine.cpp gearbox.cpp parking.cpp
+SOURCES := main.cpp car.cpp engine.cpp gearbox.cpp parking.cpp carSubclasses.cpp
 # Object files derived from source files
 OBJECTS := $(SOURCES:.cpp=.o)
 # Header files
-HEADERS := car.hpp engine.hpp gearbox.hpp parking.hpp
+HEADERS := car.hpp engine.hpp gearbox.hpp parking.hpp carSubclasses.hpp
 # Executable name
 EXECUTABLE := car
 
