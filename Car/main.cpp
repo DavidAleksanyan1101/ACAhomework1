@@ -3,8 +3,7 @@
 
 
 int main()
-{
-    Parking prk(10 , 250);
+{    
     Crossover car1("BMW X5 " , "white" , "15 II 550" , 2011 , "Gasoline" , 6 , 3 , 326 , "automatic" , 5);
     car1.offRoadModeEnable();
     car1.comfortModeEnable();
