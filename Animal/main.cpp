@@ -1,14 +1,20 @@
 #include "animal.hpp"
+#include "bear.hpp"
+#include "dog.hpp"
+#include "cat.hpp"
+#include "cow.hpp"
+#include "horse.hpp"
 
 
-int main() {
+int main()
+{
     Dog animal1;
     Cat animal2;
     Cow animal3;
     Bear animal4;
     Horse animal5;
 
-    Animal** ptr = new Animal*[5];
+    Animal** ptr = new Animal * [5];
     ptr[0] = &animal1;
     ptr[1] = &animal2;
     ptr[2] = &animal3;
@@ -19,6 +25,6 @@ int main() {
     {
         ptr[i]->voice();
     }
-    
+
     return 0;
 }

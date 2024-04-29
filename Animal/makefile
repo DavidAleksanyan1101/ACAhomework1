@@ -3,11 +3,11 @@ CXX := g++
 # Compiler flags
 CXXFLAGS := -std=c++11
 # Source files
-SOURCES := main.cpp animal.cpp
+SOURCES := main.cpp animal.cpp bear.cpp dog.cpp cat.cpp cow.cpp horse.cpp
 # Object files derived from source files
 OBJECTS := $(SOURCES:.cpp=.o)
 # Header files
-HEADERS := animal.hpp
+HEADERS := animal.hpp bear.hpp dog.hpp cat.hpp cow.hpp horse.hpp
 # Executable name
 EXECUTABLE := animal
 

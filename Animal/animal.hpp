@@ -5,38 +5,16 @@
 class Animal
 {
 public:
+    Animal() = default;
+    Animal(const std::string& ,const int&);
+    virtual ~Animal() = default;
     virtual void voice() = 0;
+    void getInfo();
+private:
+    std::string _name;
+    int _age = 0;
 };
 
-class Dog : public Animal
-{
-public:
-    void voice() override;
-};
-
-class Cat : public Animal
-{
-public:
-    void voice() override;
-};
-
-class Bear : public Animal
-{
-public:
-    void voice() override;
-};
-
-class Cow : public Animal
-{
-public:
-    void voice() override;
-};
-
-class Horse : public Animal
-{
-public:
-    void voice() override;
-};
 
 
 
