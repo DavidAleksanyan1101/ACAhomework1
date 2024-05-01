@@ -13,6 +13,7 @@ public:
 private:
     std::string _name;
     int _age = 0;
+    int _weight = 1;
 };
 
 

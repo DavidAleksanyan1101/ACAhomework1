@@ -24,6 +24,7 @@ int main()
     for (int i = 0; i < 5; ++i)
     {
         ptr[i]->voice();
+        ptr[i]->getInfo();
     }
 
     return 0;
