@@ -1,12 +1,12 @@
 #ifndef __car__
 #define __car__
-
+#include"carInterface.hpp"
 #include "engine.hpp"
 #include "gearbox.hpp"
 
 
 
-class Car
+class Car : public carInterface
 {
 public:
     Car() = default;
@@ -16,10 +16,10 @@ public:
     ~Car();
 
 public:
-    void printInfo()const;
-    void printDetailedInfo()const;
-    void setEngine(const std::string& _type , const int& _cylinders , const int& _volume , const int& _hp );
-    void setGearbox(const std::string& gearType , const int& gears);
+    void printInfo()const override;
+    void printDetailedInfo()const override;
+    void setEngine(const std::string& _type , const int& _cylinders , const int& _volume , const int& _hp ) override;
+    void setGearbox(const std::string& gearType , const int& gears) override;
 
 private:
     std::string model;
