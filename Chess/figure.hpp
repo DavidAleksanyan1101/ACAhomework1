@@ -8,7 +8,6 @@ public:
     Figure(const std::string& ,const std::string&);
     virtual ~Figure();
 public:
-    virtual void move(int , int) = 0;
     virtual bool canMove(int , int) = 0;
     std::string getName();
     std::string getColor();
@@ -22,5 +21,11 @@ private:
     int x = 0;
     int y = 0;
 };
+
+#include "king.hpp"
+#include "queen.hpp"
+#include "bishop.hpp"
+#include "rook.hpp"
+#include "knight.hpp"
 
 #endif //__Figure__

@@ -6,7 +6,6 @@ class King : public Figure
 {
 public:
 King(const std::string&);
-void move(int , int) override;
 bool canMove(int , int) override;
 private:
 

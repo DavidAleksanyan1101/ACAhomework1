@@ -3,11 +3,11 @@ CXX := g++
 # Compiler flags
 CXXFLAGS := -std=c++11
 # Source files
-SOURCES := main.cpp chessBoard.cpp figure.cpp king.cpp
+SOURCES := main.cpp chessBoard.cpp figure.cpp king.cpp queen.cpp bishop.cpp knight.cpp rook.cpp
 # Object files derived from source files
 OBJECTS := $(SOURCES:.cpp=.o)
 # Header files
-HEADERS := chessBoard.hpp figure.hpp king.hpp
+HEADERS := chessBoard.hpp figure.hpp king.hpp queen.hpp bishop.hpp knight.hpp rook.hpp
 # Executable name
 EXECUTABLE := chess
 
