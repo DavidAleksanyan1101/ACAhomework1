@@ -68,3 +68,24 @@ bool ChessBoard::move(int x1 , int y1 , int x2 , int y2)
     }
     std::cout << "That place is busy" << std::endl;
 }
+
+
+bool ChessBoard::mateAnalysis(bool color)
+{
+    bool mate = false;
+    if(color == 1){
+        for (int i = 0; i < 8; ++i)
+        {
+            for (int j = 0; j < 8; ++j)
+            {
+                if (board[i][j] != nullptr)
+                {
+                    if (board[i][j]->getColor() == "black" && board[i][j]->getName() == "King" )
+                    {
+                        
+                    }
+                } 
+            }
+        } 
+    }
+}

@@ -7,8 +7,9 @@ class ChessBoard
 public:
     ChessBoard();
     bool move(int , int , int , int);
-    bool setFigure( Figure&, int , int);
+    bool setFigure(Figure& , int , int);
     void showBoard();
+    bool mateAnalysis(bool color);//1 - white , 0 - black
 private:
     Figure*** board = nullptr;
 };
