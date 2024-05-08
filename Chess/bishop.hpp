@@ -3,6 +3,7 @@
 #include "figure.hpp"
 
 
+
 class Bishop : public Figure
 {
 public:
