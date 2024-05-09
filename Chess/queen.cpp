@@ -10,11 +10,15 @@ bool Queen::canMove(int n , int m)
         std::cout << "out of board" << std::endl;
         return false;
     }
+    if (n == getX() && m == getY())
+    {
+        return false;
+    }
     if (getX() == n ^ getY() == m)
     {
         return true;
     }
-    else  if (getX() + getY() == n + m)
+    else  if (getX() + getY() == n + m || getX() - n == getY() - m)
     {
         return true;
     }

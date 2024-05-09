@@ -1,18 +1,26 @@
 #include <iostream>
-#include"figure.hpp"
 #include"chessBoard.hpp"
 
 int main()
 {
     ChessBoard b1;
-    Rook k1("white");
-    b1.setFigure(k1 , 1 , 2);
+    King BK("black");
+    Rook WR("white");
+    Bishop WB("white");
+    Queen WQ("white");
+    Knight Wk("white");
+    b1.setFigure(BK , 7 , 2);
+    b1.setFigure(WR , 6 , 7);
+    b1.setFigure(WB , 3 , 5);
+    b1.setFigure(WQ , 7 , 7);
+    b1.setFigure(Wk , 5 , 0);
     b1.showBoard();
-    std::cout<<std::endl;
-    b1.move(1 , 2 , 3 , 2);
-    b1.move(3 , 2 , 3 , 7);
-    std::cout<<k1.getX() << k1.getY()<<std::endl;
-    b1.showBoard();
+    if(b1.mateAnalysis("black")){
+        std::cout<<"Mate"<<std::endl;
+    }
+    else{
+        std::cout<<"Isn't mate"<<std::endl;
+    }
 
-        return 0;
+    return 0;
 }

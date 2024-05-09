@@ -10,6 +10,10 @@ bool Pawn::canMove(int n , int m)
         std::cout << "out of board" << std::endl;
         return false;
     }
+    if (n == getX() && m == getY())
+    {
+        return false;
+    }
     if (getColor() == "white")
     {
         if (n - getX() == 1 && abs(m - getY()) == 1)
