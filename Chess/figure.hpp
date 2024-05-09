@@ -2,6 +2,7 @@
 #define __Figure__
 #include<iostream>
 
+
 class Figure
 {
 public:

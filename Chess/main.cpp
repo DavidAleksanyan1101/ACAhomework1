@@ -3,7 +3,6 @@
 
 int main()
 {
-    
     ChessBoard b1;
     King BK("black");
     Rook WR("white");

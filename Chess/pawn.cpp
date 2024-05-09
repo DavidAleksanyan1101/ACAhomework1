@@ -2,7 +2,6 @@
 
 Pawn::Pawn(const std::string& color) : Figure(color , "Pawn") {}
 
-
 bool Pawn::canMove(int n , int m)
 {
     if (n >= 8 || m >= 8)

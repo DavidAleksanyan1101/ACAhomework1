@@ -1,5 +1,6 @@
 #include "chessBoard.hpp"
 
+
 ChessBoard::ChessBoard()
 {
     board = new Figure * *[8];

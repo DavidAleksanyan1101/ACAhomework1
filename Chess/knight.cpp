@@ -2,7 +2,6 @@
 
 Knight::Knight(const std::string& color) : Figure(color , "Knight") {}
 
-
 bool Knight::canMove(int n , int m)
 {
     if (n >= 8 || m >= 8)

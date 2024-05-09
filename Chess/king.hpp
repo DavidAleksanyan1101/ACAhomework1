@@ -8,7 +8,6 @@ public:
 King(const std::string&);
 bool canMove(int , int) override;
 private:
-
 };
 
 #endif // __King__

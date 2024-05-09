@@ -8,7 +8,6 @@ public:
 Knight(const std::string&);
 bool canMove(int , int) override;
 private:
-
 };
 
 #endif //__Knight_

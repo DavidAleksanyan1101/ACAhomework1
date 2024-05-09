@@ -8,7 +8,6 @@ public:
 Pawn(const std::string&);
 bool canMove(int , int) override;
 private:
-
 };
 
 

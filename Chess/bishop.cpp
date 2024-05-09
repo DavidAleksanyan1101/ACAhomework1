@@ -2,7 +2,6 @@
 
 Bishop::Bishop(const std::string& color) : Figure( color , "Bishop") {}
 
-
 bool Bishop::canMove(int n , int m)
 {
     if (n >= 8 || m >= 8)

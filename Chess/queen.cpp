@@ -2,7 +2,6 @@
 
 Queen::Queen(const std::string& color) : Figure(color , "Queen") {}
 
-
 bool Queen::canMove(int n , int m)
 {
     if (n >= 8 || m >= 8)

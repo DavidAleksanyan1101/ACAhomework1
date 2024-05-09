@@ -8,7 +8,6 @@ public:
 Queen(const std::string&);
 bool canMove(int , int) override;
 private:
-
 };
 
 

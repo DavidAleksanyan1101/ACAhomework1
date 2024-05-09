@@ -2,6 +2,7 @@
 #define __ChessBoard__
 #include "figure.hpp"
 
+
 class ChessBoard
 {
 public:
