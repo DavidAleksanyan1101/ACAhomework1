@@ -7,13 +7,14 @@ class Animal
 public:
     Animal() = default;
     Animal(const std::string& ,const int&);
-    virtual ~Animal() = default;
+    Animal(const Animal& a);
+    virtual ~Animal();
     virtual void voice() = 0;
     void getInfo();
 private:
     std::string _name;
     int _age = 0;
-    int _weight = 1;
+    static int count;
 };
 
 
