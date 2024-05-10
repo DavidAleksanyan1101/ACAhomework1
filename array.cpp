@@ -6,10 +6,18 @@ public:
     Array(const int& size) : _size(size){
         _arr = new int[size];
     }
+    Array(const Array& a)  : _size(a._size){
+        _arr = new int[_size];
+    }
+    Array& operator=(const Array& a){
+        this->_size = a._size;
+        delete [] _arr;
+        _arr = new int[_size];
+    }
     ~Array(){
         delete [] _arr;
     }
-    
+
     int getSize(){
         return _size;
     }
