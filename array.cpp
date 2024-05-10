@@ -9,6 +9,7 @@ public:
     ~Array(){
         delete [] _arr;
     }
+    
     int getSize(){
         return _size;
     }
