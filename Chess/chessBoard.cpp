@@ -106,7 +106,7 @@ void ChessBoard::showBoard()
 
 bool ChessBoard::move(int x1 , int y1 , int x2 , int y2)
 {
-    if (x1 >= 8 || y1 >= 8 || x2 >= 8 || y2 >= 89)
+    if (x1 >= 8 || y1 >= 8 || x2 >= 8 || y2 >= 8)
     {
         std::cout << "out of board" << std::endl;
         return false;
