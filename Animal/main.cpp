@@ -4,6 +4,7 @@
 #include "cat.hpp"
 #include "cow.hpp"
 #include "horse.hpp"
+#include "zoo.hpp"
 
 
 int main()
@@ -14,18 +15,15 @@ int main()
     Bear animal4;
     Horse animal5;
 
-    Animal** ptr = new Animal * [5];
-    ptr[0] = &animal1;
-    ptr[1] = &animal2;
-    ptr[2] = &animal3;
-    ptr[3] = &animal4;
-    ptr[4] = &animal5;
+    Zoo* zoo = &Zoo::getInstance();
 
-    for (int i = 0; i < 5; ++i)
-    {
-        ptr[i]->voice();
-        ptr[i]->getInfo();
-    }
+    zoo->addAnimal(&animal1);
+    zoo->addAnimal(&animal2);
+    zoo->addAnimal(&animal3);
+    zoo->addAnimal(&animal4);
+    zoo->addAnimal(&animal5);
+
+    zoo->showZoo();
 
     return 0;
 }

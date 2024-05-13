@@ -5,4 +5,4 @@ void Cat::voice()
     std::cout << "I am a cat!" << std::endl;
 }
 
-Cat::Cat(const std::string& name ,const int& age) : Animal(name , age){}
+Cat::Cat(const int& age) : Animal("Cat" , age){}

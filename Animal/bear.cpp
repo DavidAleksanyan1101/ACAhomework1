@@ -5,4 +5,4 @@ void Bear::voice()
     std::cout << "I am a bear!" << std::endl;
 }
 
-Bear::Bear(const std::string& name , const int& age) : Animal(name , age) {}
+Bear::Bear(const int& age) : Animal("Bear" , age) {}

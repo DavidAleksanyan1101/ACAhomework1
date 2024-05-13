@@ -4,6 +4,6 @@ class Horse : public Animal
 {
 public:
     Horse() = default;
-    Horse(const std::string& ,const int&);
+    Horse(const int&);
     void voice() override;
 };

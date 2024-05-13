@@ -4,6 +4,6 @@ class Cat : public Animal
 {
 public:
     Cat() = default;
-    Cat(const std::string& ,const int&);
+    Cat(const int&);
     void voice() override;
 };

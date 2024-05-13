@@ -4,6 +4,6 @@ class Bear : public Animal
 {
 public:
     Bear() = default;
-    Bear(const std::string& , const int&);
+    Bear( const int&);
     void voice() override;
 };
