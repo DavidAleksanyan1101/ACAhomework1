@@ -60,7 +60,7 @@ Matrix& Matrix::operator=(const Matrix& M)
     return *this;
 }
 
-Matrix Matrix::operator+(const Matrix& M)
+const Matrix Matrix::operator+(const Matrix& M)
 {
     if (n != M.n || m != M.m)
     {
@@ -78,7 +78,7 @@ Matrix Matrix::operator+(const Matrix& M)
     return result;
 }
 
-Matrix Matrix::operator-(const Matrix& M)
+const Matrix Matrix::operator-(const Matrix& M)
 {
     if (n != M.n || m != M.m)
     {
@@ -96,7 +96,7 @@ Matrix Matrix::operator-(const Matrix& M)
     return result;
 }
 
-Matrix Matrix::operator*(const Matrix& M)
+const Matrix Matrix::operator*(const Matrix& M)
 {
     if (m != M.n)
     {
@@ -153,4 +153,28 @@ void Matrix::printMatrix()
         }
         std::cout << std::endl;
     }
+}
+
+
+Matrix& Matrix::operator++(){
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < m; ++j)
+        {
+          matrix[i][j] += 3;  
+        }
+    }
+    return *this;
+}
+
+Matrix Matrix::operator++(int){
+    Matrix temp = *this;
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < m; ++j)
+        {
+          matrix[i][j] += 3;  
+        }
+    }
+    return temp;
 }

@@ -11,6 +11,8 @@ public:
     const Matrix operator+(const Matrix& M);
     const Matrix operator-(const Matrix& M);
     const Matrix operator*(const Matrix& M);
+    Matrix& operator++();
+    Matrix operator++(int);
     ~Matrix();
 
 public:
