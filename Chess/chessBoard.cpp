@@ -27,6 +27,7 @@ bool ChessBoard::setFigure(Figure& f , int n , int m)
     board[n][m] = &f;
     f.setX(n);
     f.setY(m);
+    f.setBoard(this);
 }
 
 void ChessBoard::showBoard()
@@ -266,4 +267,9 @@ bool ChessBoard::mateAnalysis(const std::string& color)
 }
 
 
-
+bool ChessBoard::positionStatus(int n , int m){
+    if(board[n][m] == nullptr){
+        return true;
+    }
+    return false;
+}

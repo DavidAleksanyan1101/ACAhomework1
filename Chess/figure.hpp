@@ -2,6 +2,7 @@
 #define __Figure__
 #include<iostream>
 
+class ChessBoard;
 
 class Figure
 {
@@ -16,6 +17,9 @@ public:
     int getY();
     void setX(int);
     void setY(int);
+    void setBoard(ChessBoard* b);
+protected:    
+    ChessBoard* board;
 private:
     std::string _color;
     std::string _name;

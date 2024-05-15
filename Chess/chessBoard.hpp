@@ -11,6 +11,7 @@ public:
     bool setFigure(Figure& , int , int);
     void showBoard();
     bool mateAnalysis(const std::string& color);//1 - white , 0 - black
+    bool positionStatus(int , int);
 private:
     Figure*** board = nullptr;
 };

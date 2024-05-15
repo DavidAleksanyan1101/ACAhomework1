@@ -1,6 +1,8 @@
 #include "rook.hpp"
+#include "chessBoard.hpp"
 
-Rook::Rook(const std::string& color) : Figure( color , "Rook") {}
+
+Rook::Rook(const std::string& color) : Figure(color , "Rook") {}
 
 bool Rook::canMove(int n , int m)
 {
@@ -13,8 +15,54 @@ bool Rook::canMove(int n , int m)
     {
         return false;
     }
-    if (getX() == n ^ getY() == m)
+    if (getX() == n)
     {
+        if (m < getY())
+        {
+            for (int i = getY() - 1; i > m; --i)
+            {
+                if (!(board->positionStatus(n , i)))
+                {
+                    return false;
+                }
+            }
+        }
+        else if (m > getY())
+        {
+            for (int i = getY() + 1; i < m; ++i)
+            {
+                if (!(board->positionStatus(n , i)))
+                {
+                    return false;
+                }
+            }
+        }
         return true;
     }
+    else if (getY() == m)
+    {
+        if (n < getX())
+        {
+            for (int i = getX() - 1; i > n; --i)
+            {
+                if (!(board->positionStatus(i , m)))
+                {
+                    return false;
+                }
+            }
+        }
+        else if (n > getX())
+        {
+            for (int i = getX() + 1; i < n; ++i)
+            {
+                if (!(board->positionStatus(i , m)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+
 }

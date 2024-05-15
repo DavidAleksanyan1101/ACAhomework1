@@ -1,6 +1,7 @@
 #include "bishop.hpp"
+#include "chessBoard.hpp"
 
-Bishop::Bishop(const std::string& color) : Figure( color , "Bishop") {}
+Bishop::Bishop(const std::string& color) : Figure(color , "Bishop") {}
 
 bool Bishop::canMove(int n , int m)
 {
@@ -13,9 +14,55 @@ bool Bishop::canMove(int n , int m)
     {
         return false;
     }
-    
-    if (getX() + getY() == n + m || getX() - n == getY() - m)
+
+    if (getX() - n == getY() - m)
     {
-        return true;
+        if (getX() < n)
+        {
+            for (int i = 1; i < n - getX(); ++i)
+            {
+                if (!(board->positionStatus(getX() + i , getY() + i)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (getX() > n)
+        {
+            for (int i = 1; i < getX() - n; ++i)
+            {
+                if (!(board->positionStatus(n + i , m + i)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    else if (getX() + getY() == n + m)
+    {
+        if (getX() < n)
+        {
+            for (int i = 1; i < n - getX(); ++i)
+            {
+                if (!(board->positionStatus(getX() + i , getY() - i)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (getX() > n)
+        {
+            for (int i = 1; i < getX() - n; ++i)
+            {
+                if (!(board->positionStatus(n - i , m + i)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

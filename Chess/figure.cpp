@@ -1,4 +1,5 @@
 #include "figure.hpp"
+#include "chessBoard.hpp"
 
 
 Figure::Figure(const std::string& color , const std::string& name) : _color(color) , _name(name) {}
@@ -22,4 +23,7 @@ void Figure::setX(int a){
 }
 void Figure::setY(int a){
     y = a;
+}
+void Figure::setBoard(ChessBoard* b){
+    board = b;
 }
