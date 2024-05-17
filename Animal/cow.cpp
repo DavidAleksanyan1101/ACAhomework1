@@ -6,3 +6,11 @@ void Cow::voice()
 }
 
 Cow::Cow(const int& age) : Animal("Cow" , age){}
+
+Cow& Cow::operator=(Cow&& c){
+    if(this != &c){
+        Animal::operator=(c);
+    }
+}
+
+Cow::Cow(Cow&& b): Animal(std::move(b)){}
