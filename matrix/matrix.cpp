@@ -34,6 +34,25 @@ Matrix::Matrix(const Matrix& M)
     }
 }
 
+Matrix::Matrix(Matrix&& M){
+    matrix = M.matrix;
+    n = M.n;
+    m = M.m;
+
+    M.matrix = nullptr;
+}
+
+Matrix Matrix::operator=(Matrix&& M){
+    delete [] matrix;
+     
+    matrix = M.matrix;
+    n = M.n;
+    m = M.m;
+
+    M.matrix = nullptr;
+}
+
+
 Matrix& Matrix::operator=(const Matrix& M)
 {
     for (int i = 0; i < n; ++i)
@@ -156,24 +175,26 @@ void Matrix::printMatrix()
 }
 
 
-Matrix& Matrix::operator++(){
+Matrix& Matrix::operator++()
+{
     for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < m; ++j)
         {
-          matrix[i][j] += 3;  
+            matrix[i][j] += 3;
         }
     }
     return *this;
 }
 
-Matrix Matrix::operator++(int){
+Matrix Matrix::operator++(int)
+{
     Matrix temp = *this;
     for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < m; ++j)
         {
-          matrix[i][j] += 3;  
+            matrix[i][j] += 3;
         }
     }
     return temp;
