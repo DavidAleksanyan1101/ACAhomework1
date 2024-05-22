@@ -46,6 +46,7 @@ dataType checkType(const std::string& s)
 
 void printData(Data** arr , const int& size)
 {
+    std::cout<<__func__<<std::endl;
     for (int i = 0; i < size;++i)
     {
         switch (arr[i]->_type)
@@ -70,40 +71,46 @@ void printData(Data** arr , const int& size)
 int main()
 {
     std::ifstream inputFile("input.txt");
-    Data** arr = new Data * [30];
     int arrSize = 0;
-    for (int i = 0; i < 30; i++)
+    std::string s1;
+    while(getline(inputFile , s1)){
+        ++arrSize;
+    }
+    inputFile.clear();
+    inputFile.seekg(0);
+
+    Data** arr = new Data * [arrSize];
+    for (int i = 0; i < arrSize; i++)
     {
         arr[i] = nullptr;
     }
-    std::string s1;
     if (inputFile.is_open())
     {
+        int count = 0;
         while (std::getline(inputFile , s1))
         {
-            arr[arrSize] = new Data;
-
+            arr[count] = new Data;
+            
             switch (checkType(s1))
             {
             case dataType::INT:
-                arr[arrSize]->_type = dataType::INT;
-                arr[arrSize]->v_int = stoi(s1);
+                arr[count]->_type = dataType::INT;
+                arr[count]->v_int = stoi(s1);
                 break;
             case dataType::FLOAT:
-                arr[arrSize]->_type = dataType::FLOAT;
-                arr[arrSize]->v_float = stof(s1);
+                arr[count]->_type = dataType::FLOAT;
+                arr[count]->v_float = stof(s1);
                 break;
             case dataType::STRING:
-                arr[arrSize]->_type = dataType::STRING;
-                arr[arrSize]->v_string = new std::string(s1);
+                arr[count]->_type = dataType::STRING;
+                arr[count]->v_string = new std::string(s1);
                 break;
             default:
                 break;
             }
-            ++arrSize;
+            ++count;
         }
     }
-
     printData(arr , arrSize);
 
 
