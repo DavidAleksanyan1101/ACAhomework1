@@ -2,6 +2,7 @@
 
 Matrix::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
 {
+    std::srand(time(0));
     matrix = new int* [n];
     for (int i = 0; i < n; ++i)
     {
@@ -18,6 +19,7 @@ Matrix::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
 
 Matrix::Matrix(const Matrix& M)
 {
+    std::srand(time(0));
     this->n = M.n;
     this->m = M.m;
     matrix = new int* [n];
@@ -34,23 +36,27 @@ Matrix::Matrix(const Matrix& M)
     }
 }
 
-Matrix::Matrix(Matrix&& M){
-    matrix = M.matrix;
-    n = M.n;
-    m = M.m;
+// Matrix::Matrix(Matrix&& M)
+// {
+//     std::cout<<"move ctor"<<std::endl;
+//     matrix = M.matrix;
+//     n = M.n;
+//     m = M.m;
 
-    M.matrix = nullptr;
-}
+//     M.matrix = nullptr;
+// }
 
-Matrix Matrix::operator=(Matrix&& M){
-    delete [] matrix;
-     
-    matrix = M.matrix;
-    n = M.n;
-    m = M.m;
+// Matrix Matrix::operator=(Matrix&& M)
+// {
+//     std::cout<<"move ="<<std::endl;
+//     delete[] matrix;
 
-    M.matrix = nullptr;
-}
+//     matrix = M.matrix;
+//     n = M.n;
+//     m = M.m;
+
+//     M.matrix = nullptr;
+// }
 
 
 Matrix& Matrix::operator=(const Matrix& M)
