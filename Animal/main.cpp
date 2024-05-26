@@ -9,13 +9,18 @@
 
 int main()
 {
-    Dog animal1;
-    Cat animal2;
-    Cow animal3;
-    Bear animal4;
-    Horse animal5;
+    Dog animal1 = 12;
+    Cat animal2 = 11;
+    Cow animal3  = 5;
+    Bear animal4 = 43;
+    Horse animal5 = 1;
 
+    Animal* a1 = &animal1;
+    Animal* a2 = &animal2;
     Zoo* zoo = &Zoo::getInstance();
+    if(*a2 < *a1){
+        std::cout<<"aaaaaaaaaaaaaaaa"<<std::endl;
+    }
 
     zoo->addAnimal(&animal1);
     zoo->addAnimal(&animal2);
@@ -24,6 +29,7 @@ int main()
     zoo->addAnimal(&animal5);
 
     zoo->showZoo();
+    zoo->showBiggestAnimal();
 
     return 0;
 }

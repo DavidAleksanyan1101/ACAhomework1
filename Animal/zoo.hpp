@@ -8,6 +8,7 @@ class Zoo
 public:
     static Zoo& getInstance();
     void showZoo();
+    void showBiggestAnimal();
     bool addAnimal(Animal*);
     void removeAnimal(const int&);
 private:

@@ -8,4 +8,5 @@ public:
     Cat(Cat&&);
     void voice() override;
     Cat& operator=(Cat&&);
+    
 };

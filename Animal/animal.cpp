@@ -21,15 +21,42 @@ Animal::Animal(const Animal& a)
     ++count;
 }
 
-Animal& Animal::operator=(const Animal& a){
-    if(this != &a){
-    delete _name;
-    delete _age;
+Animal& Animal::operator=(const Animal& a)
+{
+    if (this != &a)
+    {
+        delete _name;
+        delete _age;
 
-    _name = new std::string(*(a._name));
-    _age = new int(*(a._age));
+        _name = new std::string(*(a._name));
+        _age = new int(*(a._age));
     }
     return *this;
+}
+
+bool Animal::operator==(const Animal& a)
+{
+    if (this->_age == a._age && this->_name == a._name)
+    {
+        return true;
+    }
+    return false;
+}
+bool Animal::operator>(const Animal& a)
+{
+    if (this->_age > a._age)
+    {
+        return true;
+    }
+    return false;
+}
+bool Animal::operator<(const Animal& a)
+{
+    if (this->_age < a._age)
+    {
+        return true;
+    }
+    return false;
 }
 
 

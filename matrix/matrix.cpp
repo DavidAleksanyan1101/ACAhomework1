@@ -36,27 +36,39 @@ Matrix::Matrix(const Matrix& M)
     }
 }
 
-// Matrix::Matrix(Matrix&& M)
-// {
-//     std::cout<<"move ctor"<<std::endl;
-//     matrix = M.matrix;
-//     n = M.n;
-//     m = M.m;
+Matrix::Matrix(Matrix&& M)
+{
+    std::cout << "move ctor" << std::endl;
+    matrix = M.matrix;
+    n = M.n;
+    m = M.m;
 
-//     M.matrix = nullptr;
-// }
+    M.matrix = nullptr;
+    M.n = 0;
+    M.m = 0;
+}
 
-// Matrix Matrix::operator=(Matrix&& M)
-// {
-//     std::cout<<"move ="<<std::endl;
-//     delete[] matrix;
+Matrix& Matrix::operator=(Matrix&& M)
+{
+    std::cout << "move =" << std::endl;
+    if (this != &M)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
 
-//     matrix = M.matrix;
-//     n = M.n;
-//     m = M.m;
+        matrix = M.matrix;
+        n = M.n;
+        m = M.m;
 
-//     M.matrix = nullptr;
-// }
+        M.matrix = nullptr;
+        M.n = 0;
+        M.m = 0;
+    }
+    return *this;
+}
 
 
 Matrix& Matrix::operator=(const Matrix& M)

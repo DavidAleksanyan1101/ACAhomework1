@@ -29,7 +29,7 @@ void makeMatrixFile(const std::string& s , const Matrix& mat)
     }
 }
 
-Matrix& readMatrixFile(const std::string& s)
+Matrix readMatrixFile(const std::string& s)
 {
     std::ifstream rf(s);
     if (!rf.is_open())
@@ -56,26 +56,26 @@ Matrix& readMatrixFile(const std::string& s)
     rf.clear();
     rf.seekg(0);
 
-    Matrix* mat = new Matrix(n , m);
+    Matrix mat(n , m);
     int x = 0;
-    for (int i = 0; i < mat->n; i++)
+    for (int i = 0; i < mat.n; i++)
     {
         std::getline(rf , line);
         std::istringstream sstr(line);
-        for (int j = 0; j < mat->m; j++)
+        for (int j = 0; j < mat.m; j++)
         {
             sstr >> x;
-            mat->matrix[i][j] = x;
+            mat.matrix[i][j] = x;
         }
     }
-    return *mat;
+    return mat;
 }
 
 
 int main()
 {
     makeMatrixFile("Matrix1.txt " , 3 , 2);
-    makeMatrixFile("Matrix2.txt " , 2 , 3);
+    // makeMatrixFile("Matrix2.txt " , 2 , 3);
     Matrix mat1 = readMatrixFile("Matrix1.txt");
     Matrix mat2 = readMatrixFile("Matrix2.txt");
     Matrix matrixMult = mat1 * mat2;

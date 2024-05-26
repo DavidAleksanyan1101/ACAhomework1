@@ -8,4 +8,5 @@ public:
     Cow(Cow&&);
     Cow& operator=(Cow&&);
     void voice() override;
+    
 };

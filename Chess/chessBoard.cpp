@@ -201,28 +201,28 @@ bool ChessBoard::mateAnalysis(const std::string& color)
     }
     // std::cout << check << std::endl;
 
-    int checkX = 0;
-    int checkY = 0;
-    if (kingX < 7 && kingY < 7)
-    {
-        checkX = 3;
-        checkY = 3;
-    }
-    else if (kingX == 7 && kingY < 7)
-    {
-        checkX = 2;
-        checkY = 3;
-    }
-    else if (kingX < 7 && kingY == 7)
-    {
-        checkX = 3;
-        checkY = 2;
-    }
-    else if (kingX == 7 && kingY == 7)
-    {
-        checkX = 2;
-        checkY = 2;
-    }
+    int checkX = 3;
+    int checkY = 3;
+    // if (kingX < 7 && kingY < 7)
+    // {
+    //     checkX = 3;
+    //     checkY = 3;
+    // }
+    // else if (kingX == 7 && kingY < 7)
+    // {
+    //     checkX = 2;
+    //     checkY = 3;
+    // }
+    // else if (kingX < 7 && kingY == 7)
+    // {
+    //     checkX = 3;
+    //     checkY = 2;
+    // }
+    // else if (kingX == 7 && kingY == 7)
+    // {
+    //     checkX = 2;
+    //     checkY = 2;
+    // }
     // std::cout << checkX << checkY << std::endl;
     for (int i = 0; i < checkX; ++i)
     {
@@ -233,7 +233,15 @@ bool ChessBoard::mateAnalysis(const std::string& color)
             {
                 continue;
             }
-
+            if (i + kingX -1 < 0 || i + kingX - 1 > 7)
+            {
+                continue;
+            }
+            if (j + kingY -1 < 0 || j + kingY - 1 > 7)
+            {
+                continue;
+            }
+            
             for (int n = 0; n < 8; ++n)
             {
                 for (int k = 0; k < 8; ++k)

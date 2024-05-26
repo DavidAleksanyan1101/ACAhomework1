@@ -8,4 +8,5 @@ public:
     Horse(Horse&&);
     Horse& operator=(Horse&&);
     void voice() override;
+    
 };
