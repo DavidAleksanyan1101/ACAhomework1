@@ -1,6 +1,7 @@
 #ifndef __Vector__
 #define __Vector__
 
+namespace myStd{
 template<typename T>
 class vector
 {
@@ -24,6 +25,7 @@ private:
     int _capacity = 0;
     int _size = 0;
 };
+
 
 
 
@@ -173,5 +175,5 @@ void vector<T>::pop_back(){
     return;
 }
 
-
+};
 #endif //__Vector__
