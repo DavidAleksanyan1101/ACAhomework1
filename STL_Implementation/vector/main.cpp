@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 #include"vector.hpp"
-#include<array>
 
 int main()
 {
