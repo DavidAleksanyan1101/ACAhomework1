@@ -1,8 +1,6 @@
 #ifndef __Vector__
 #define __Vector__
 
-namespace myStd
-{
     template<typename T>
     class vector
     {
@@ -271,5 +269,5 @@ namespace myStd
         }
     }
 
-};
+
 #endif //__Vector__
