@@ -2,6 +2,22 @@
 #include "mySTL.hpp"
 #include<forward_list>
 
+template<typename T>
+bool cycleCheck(mySTL::forward_list<T> list)
+{
+    Node<T>* first = list.head;
+    Node<T>* second = list.head;
+    while (first->next != nullptr || second->next != nullptr)
+    {
+        first = first->next;
+        second = second->next->next;
+        if(first == second ){
+            return true;
+        }
+    }
+    return false;
+}
+
 int main()
 {
     mySTL::Node<std::string> n("ddd5");
