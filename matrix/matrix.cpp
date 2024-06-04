@@ -1,6 +1,7 @@
 #include"matrix.hpp"
 
-Matrix::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
+template<typename T>
+Matrix<T>::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
 {
     std::srand(time(0));
     matrix = new int* [n];
@@ -17,7 +18,8 @@ Matrix::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
     }
 }
 
-Matrix::Matrix(const Matrix& M)
+template<typename T>
+Matrix<T>::Matrix(const Matrix& M)
 {
     std::srand(time(0));
     this->n = M.n;
@@ -36,7 +38,8 @@ Matrix::Matrix(const Matrix& M)
     }
 }
 
-Matrix::Matrix(Matrix&& M)
+template<typename T>
+Matrix<T>::Matrix(Matrix&& M)
 {
     std::cout << "move ctor" << std::endl;
     matrix = M.matrix;
@@ -48,7 +51,8 @@ Matrix::Matrix(Matrix&& M)
     M.m = 0;
 }
 
-Matrix& Matrix::operator=(Matrix&& M)
+template<typename T>
+Matrix<T>& Matrix<T>::operator=(Matrix&& M)
 {
     std::cout << "move =" << std::endl;
     if (this != &M)
@@ -70,8 +74,8 @@ Matrix& Matrix::operator=(Matrix&& M)
     return *this;
 }
 
-
-Matrix& Matrix::operator=(const Matrix& M)
+template<typename T>
+Matrix<T>& Matrix<T>::operator=(const Matrix& M)
 {
     for (int i = 0; i < n; ++i)
     {
@@ -97,7 +101,8 @@ Matrix& Matrix::operator=(const Matrix& M)
     return *this;
 }
 
-const Matrix Matrix::operator+(const Matrix& M)
+template<typename T>
+const Matrix<T> Matrix<T>::operator+(const Matrix& M)
 {
     if (n != M.n || m != M.m)
     {
@@ -115,7 +120,8 @@ const Matrix Matrix::operator+(const Matrix& M)
     return result;
 }
 
-const Matrix Matrix::operator-(const Matrix& M)
+template<typename T>
+const Matrix<T> Matrix<T>::operator-(const Matrix& M)
 {
     if (n != M.n || m != M.m)
     {
@@ -133,7 +139,8 @@ const Matrix Matrix::operator-(const Matrix& M)
     return result;
 }
 
-const Matrix Matrix::operator*(const Matrix& M)
+template<typename T>
+const Matrix<T> Matrix<T>::operator*(const Matrix& M)
 {
     if (m != M.n)
     {
@@ -156,8 +163,8 @@ const Matrix Matrix::operator*(const Matrix& M)
 }
 
 
-
-Matrix::~Matrix()
+template<typename T>
+Matrix<T>::~Matrix()
 {
     for (int i = 0; i < n; ++i)
     {
@@ -166,7 +173,8 @@ Matrix::~Matrix()
     delete[] matrix;
 }
 
-void Matrix::transposeMatrix()
+template<typename T>
+void Matrix<T>::transposeMatrix()
 {
     Matrix newMatrix(m , n);
     for (int i = 0; i < m; ++i)
@@ -180,7 +188,8 @@ void Matrix::transposeMatrix()
     std::swap(n , m);
 }
 
-void Matrix::printMatrix()
+template<typename T>
+void Matrix<T>::printMatrix()
 {
     for (int i = 0; i < n; ++i)
     {
@@ -192,8 +201,8 @@ void Matrix::printMatrix()
     }
 }
 
-
-Matrix& Matrix::operator++()
+template<typename T>
+Matrix<T>& Matrix<T>::operator++()
 {
     for (int i = 0; i < n; ++i)
     {
@@ -205,7 +214,8 @@ Matrix& Matrix::operator++()
     return *this;
 }
 
-Matrix Matrix::operator++(int)
+template<typename T>
+Matrix<T> Matrix<T>::operator++(int)
 {
     Matrix temp = *this;
     for (int i = 0; i < n; ++i)
