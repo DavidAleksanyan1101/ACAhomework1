@@ -1,24 +1,20 @@
 #include <iostream>
-// #include "mySTL.hpp"
-#include "forward_list.hpp"
+#include "list.hpp"
+#include<list>
 
 
 int main()
 {
-    mySTL::Node<std::string> n("ddd5");
-    mySTL::forward_list<int> sl;
-    std::string s1 = "6";
-    sl.push_front(1);
-    sl.push_front(2);
-    sl.push_front(3);
-    sl.push_front(4);
-    sl.push_front(5);
-    sl.insert(0 , 6);
-    sl.print();
-    sl.reverse();
-    sl.print();
-
-    sl.cycleCheck();
-
+    mySTL::list<int> l1;
+    l1.push_back(5);
+    l1.push_back(4);
+    l1.push_back(3);
+    l1.push_back(2);
+    l1.push_back(1);
+    l1.insert(2 , 45);
+    l1.pop_front();
+    std::cout<<l1.front()<<std::endl;
+    std::cout<<l1.back()<<std::endl;
+    l1.print();
     return 0;
 }
