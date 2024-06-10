@@ -1,20 +1,25 @@
 #include <iostream>
-#include "list.hpp"
-#include<list>
+#include "forward_list.hpp"
+#include "iterators/input_iterator.hpp"
 
+template <typename T>
+void printList(const mySTL::forward_list<T>& list)
+{
+    for (input_iterator<int> it = list.begin(); it != list.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+}
 
 int main()
 {
-    mySTL::list<int> l1;
-    l1.push_back(5);
-    l1.push_back(4);
-    l1.push_back(3);
-    l1.push_back(2);
-    l1.push_back(1);
-    l1.insert(2 , 45);
-    l1.pop_front();
-    std::cout<<l1.front()<<std::endl;
-    std::cout<<l1.back()<<std::endl;
-    l1.print();
+    mySTL::forward_list<int> fl;
+    fl.push_front(5);
+    fl.push_front(34);
+    fl.push_front(9);
+    fl.push_front(98);
+
+    printList(fl);
+    
     return 0;
 }

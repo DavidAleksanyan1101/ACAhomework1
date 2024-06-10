@@ -32,6 +32,8 @@ namespace mySTL
         void print();
         void reverse();
         int size();
+        Node<T>* begin() const;
+        Node<T>* end() const;
 
     private:
         Node<T> *head = nullptr;
@@ -173,24 +175,34 @@ namespace mySTL
         }
     }
 
-template <typename T>
-T forward_list<T>::lastNthElem(const int &a)
-{
-    if (a >= this->size())
+    template <typename T>
+    T forward_list<T>::lastNthElem(const int &a)
     {
-        throw std::out_of_range(" ");
-    }
-    
-    Node<T>* tmp = head;
-    for (int i = 0; i < this->size() - a - 1; i++)
-    {
-        tmp = tmp->next;
-    }
-    return tmp->data;
-}
+        if (a >= this->size())
+        {
+            throw std::out_of_range(" ");
+        }
 
+        Node<T> *tmp = head;
+        for (int i = 0; i < this->size() - a - 1; i++)
+        {
+            tmp = tmp->next;
+        }
+        return tmp->data;
+    }
+
+    template <typename T>
+    Node<T>* forward_list<T>::begin() const
+    {
+        return head;
+    }
+
+    template <typename T>
+    Node<T>* forward_list<T>::end() const
+    {
+        return nullptr;
+    }
 
 };
-
 
 #endif //__forward_list__

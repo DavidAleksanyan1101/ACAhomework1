@@ -2,6 +2,7 @@
 #define __merge_sort__
 #include <iostream>
 
+
 void merge(int *arr, const int &begin, const int &mid, const int &end)
 {
     int firstArrSize = mid - begin + 1;
