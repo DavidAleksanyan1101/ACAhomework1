@@ -87,7 +87,7 @@ void deleteSmallerMedian(std::list<int> &list)
         }
     }
 }
-
+ 
 int main()
 {
     std::vector v1{23, 45, 3, 76, 88, 91, 11, 14, 7};
