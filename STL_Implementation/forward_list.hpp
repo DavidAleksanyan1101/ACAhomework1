@@ -22,6 +22,7 @@ namespace mySTL
         forward_list() = default;
 
     public:
+        T &front();
         void push_front(const Node<T> &);
         void push_front(const T &);
         void pop_front();
@@ -32,8 +33,8 @@ namespace mySTL
         void print();
         void reverse();
         int size();
-        Node<T>* begin() const;
-        Node<T>* end() const;
+        Node<T> *begin() const;
+        Node<T> *end() const;
 
     private:
         Node<T> *head = nullptr;
@@ -44,7 +45,11 @@ namespace mySTL
     {
         data = _data;
     }
-
+    template <typename T>
+    T &forward_list<T>::front()
+    {
+        return  head->data;
+    }
     template <typename T>
     void forward_list<T>::push_front(const Node<T> &n)
     {
@@ -192,13 +197,13 @@ namespace mySTL
     }
 
     template <typename T>
-    Node<T>* forward_list<T>::begin() const
+    Node<T> *forward_list<T>::begin() const
     {
         return head;
     }
 
     template <typename T>
-    Node<T>* forward_list<T>::end() const
+    Node<T> *forward_list<T>::end() const
     {
         return nullptr;
     }

@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <cmath>
+#include "stackList.hpp"
 
 template <typename T>
 void printMyList(const mySTL::forward_list<T> &list)
@@ -87,19 +88,34 @@ void deleteSmallerMedian(std::list<int> &list)
         }
     }
 }
- 
+
+
 int main()
 {
-    std::vector v1{23, 45, 3, 76, 88, 91, 11, 14, 7};
-    printVec(v1);
-    deletePrimes(v1);
-    printVec(v1);
+    mySTL::stack<int> s1;
+    s1.push(1);
+    s1.push(2);
+    s1.push(3);
+    s1.push(4);
+    s1.push(5);
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout<<s1.top()<<" ";
+        s1.pop();
+    }
     std::cout<<std::endl;
 
-    std::list<int> l1{32, 123, 43, 12, 65, 89, 230, 150};
-    printList(l1);
-    deleteSmallerMedian(l1);
-    printList(l1);
+
+    // std::vector v1{23, 45, 3, 76, 88, 91, 11, 14, 7};
+    // printVec(v1);
+    // deletePrimes(v1);
+    // printVec(v1);
+    // std::cout<<std::endl;
+
+    // std::list<int> l1{32, 123, 43, 12, 65, 89, 230, 150};
+    // printList(l1);
+    // deleteSmallerMedian(l1);
+    // printList(l1);
 
     return 0;
 }

@@ -269,5 +269,10 @@
         }
     }
 
+    template<typename T>
+    T& vector<T>::back()
+    {
+            return _arr[_size - 1];
+    }
 
 #endif //__Vector__
