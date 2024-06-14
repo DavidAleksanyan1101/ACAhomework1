@@ -1,9 +1,6 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "forward_list.hpp"
 #include "iterators/input_iterator.hpp"
-#include <vector>
-#include <list>
-#include <cmath>
 #include "stackList.hpp"
 
 template <typename T>
@@ -89,33 +86,27 @@ void deleteSmallerMedian(std::list<int> &list)
     }
 }
 
+std::string intToString(const int &a)
+{
+    static std::map<int , std::string> mp;
+    mp[1] = "one";
+    mp[2] = "two";
+    mp[3] = "three";
+    mp[4] = "four";
+    mp[5] = "five";
+    mp[6] = "six";
+    mp[7] = "seven";
+    mp[8] = "eight";
+    mp[9] = "nine";
+
+    return mp[a];
+
+}
 
 int main()
 {
-    mySTL::stack<int> s1;
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    s1.push(5);
-    for (int i = 0; i < 5; i++)
-    {
-        std::cout<<s1.top()<<" ";
-        s1.pop();
-    }
-    std::cout<<std::endl;
-
-
-    // std::vector v1{23, 45, 3, 76, 88, 91, 11, 14, 7};
-    // printVec(v1);
-    // deletePrimes(v1);
-    // printVec(v1);
-    // std::cout<<std::endl;
-
-    // std::list<int> l1{32, 123, 43, 12, 65, 89, 230, 150};
-    // printList(l1);
-    // deleteSmallerMedian(l1);
-    // printList(l1);
+    std::cout<<intToString(5)<<std::endl;
+    std::cout<<intToString(6)<<std::endl;
 
     return 0;
 }
