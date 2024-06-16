@@ -1,14 +1,13 @@
-#include "queen.hpp"
-#include "chessBoard.hpp"
+#include "../headers/queen.hpp"
+#include "../../chessBoard.hpp"
 
-Queen::Queen(const std::string& color) : Figure(color , "Queen") {}
+Queen::Queen(const std::string &color) : Figure(color, "Queen") {}
 
-bool Queen::canMove(int n , int m)
+bool Queen::canMove(int n, int m)
 {
-    if (n >= 8 || m >= 8)
+    if (n >= 8 || m >= 8 || n < 0 || m < 0)
     {
-        std::cout << "out of board" << std::endl;
-        return false;
+        throw std::out_of_range("invalid position");
     }
     if (n == getX() && m == getY())
     {
@@ -22,7 +21,7 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = getY() - 1; i > m; --i)
                 {
-                    if (!(board->positionStatus(n , i)))
+                    if (!(board->positionStatus(n, i)))
                     {
                         return false;
                     }
@@ -32,7 +31,7 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = getY() + 1; i < m; ++i)
                 {
-                    if (!(board->positionStatus(n , i)))
+                    if (!(board->positionStatus(n, i)))
                     {
                         return false;
                     }
@@ -45,7 +44,7 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = getX() - 1; i > n; --i)
                 {
-                    if (!(board->positionStatus(i , m)))
+                    if (!(board->positionStatus(i, m)))
                     {
                         return false;
                     }
@@ -55,7 +54,7 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = getX() + 1; i < n; ++i)
                 {
-                    if (!(board->positionStatus(i , m)))
+                    if (!(board->positionStatus(i, m)))
                     {
                         return false;
                     }
@@ -64,7 +63,7 @@ bool Queen::canMove(int n , int m)
         }
         return true;
     }
-    else  if (getX() + getY() == n + m || getX() - n == getY() - m)
+    else if (getX() + getY() == n + m || getX() - n == getY() - m)
     {
         if (getX() - n == getY() - m)
         {
@@ -72,7 +71,7 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = 1; i < n - getX(); ++i)
                 {
-                    if (!(board->positionStatus(getX() + i , getY() + i)))
+                    if (!(board->positionStatus(getX() + i, getY() + i)))
                     {
                         return false;
                     }
@@ -82,11 +81,12 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = 1; i < getX() - n; ++i)
                 {
-                    if (!(board->positionStatus(n + i , m + i)))
+                    if (!(board->positionStatus(n + i, m + i)))
                     {
                         return false;
                     }
                 }
+                return true;
             }
         }
         else if (getX() + getY() == n + m)
@@ -95,23 +95,24 @@ bool Queen::canMove(int n , int m)
             {
                 for (int i = 1; i < n - getX(); ++i)
                 {
-                    if (!(board->positionStatus(getX() + i , getY() - i)))
+                    if (!(board->positionStatus(getX() + i, getY() - i)))
                     {
                         return false;
                     }
                 }
+                return true;
             }
             if (getX() > n)
             {
                 for (int i = 1; i < getX() - n; ++i)
                 {
-                    if (!(board->positionStatus(n - i , m + i)))
+                    if (!(board->positionStatus(n - i, m + i)))
                     {
                         return false;
                     }
                 }
+                return true;
             }
-            return true;
         }
     }
 }

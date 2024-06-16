@@ -7,19 +7,19 @@ class ChessBoard;
 class Figure
 {
 public:
-    Figure(const std::string& ,const std::string&);
+    Figure(const std::string &, const std::string &);
     virtual ~Figure();
 public:
-    virtual bool canMove(int , int) = 0;
+    virtual bool canMove(int, int) = 0;
     std::string getName();
     std::string getColor();
     int getX();
     int getY();
     void setX(int);
     void setY(int);
-    void setBoard(ChessBoard* b);
-protected:    
-    ChessBoard* board;
+    void setBoard(ChessBoard *b);
+protected:
+    ChessBoard *board;
 private:
     std::string _color;
     std::string _name;

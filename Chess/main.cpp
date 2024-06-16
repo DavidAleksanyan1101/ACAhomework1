@@ -26,6 +26,7 @@ int main()
     // b1.setFigure(WB , 4 , 2);
     b1.setFigure(WQ , 1 , 7);
     // b1.setFigure(Wk , 3 , 5);
+    std::cout<<WK.canMove(1,7)<<std::endl;
     b1.showBoard();
 
     // b1.setFigure(BK , 5 , 7);

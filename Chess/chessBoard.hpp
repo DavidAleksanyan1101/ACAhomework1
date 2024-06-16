@@ -1,6 +1,6 @@
 #ifndef __ChessBoard__
 #define __ChessBoard__
-#include "figure.hpp"
+#include "Figures/headers/figure.hpp"  
 
 
 class ChessBoard
@@ -11,7 +11,7 @@ public:
     bool setFigure(Figure& , int , int);
     void showBoard();
     bool mateAnalysis(const std::string& color);//1 - white , 0 - black
-    bool positionStatus(int , int);
+    bool positionStatus(const int& ,const int&);
 private:
     Figure*** board = nullptr;
 };

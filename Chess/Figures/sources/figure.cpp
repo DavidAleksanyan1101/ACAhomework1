@@ -1,5 +1,5 @@
-#include "figure.hpp"
-#include "chessBoard.hpp"
+#include "../headers/figure.hpp"
+#include "../../chessBoard.hpp"
 
 
 Figure::Figure(const std::string& color , const std::string& name) : _color(color) , _name(name) {}
