@@ -2,10 +2,10 @@
 
 ChessBoard::ChessBoard()
 {
-    board = new Figure **[8];
+    board = new Figure * *[8];
     for (int i = 0; i < 8; ++i)
     {
-        board[i] = new Figure *[8];
+        board[i] = new Figure * [8];
     }
     for (int i = 0; i < 8; ++i)
     {
@@ -175,7 +175,7 @@ bool ChessBoard::mateAnalysis(const std::string &color)
             break;
         }
     }
-    std::cout << kingX << kingY << std::endl;
+    // std::cout << kingX << kingY << std::endl;
     bool check = false;
     for (int i = 0; i < 8; ++i)
     {
@@ -202,31 +202,9 @@ bool ChessBoard::mateAnalysis(const std::string &color)
     {
         return false;
     }
-    std::cout << check << std::endl;
 
     int checkX = 3;
     int checkY = 3;
-    // if (kingX < 7 && kingY < 7)
-    // {
-    //     checkX = 3;
-    //     checkY = 3;
-    // }
-    // else if (kingX == 7 && kingY < 7)
-    // {
-    //     checkX = 2;
-    //     checkY = 3;
-    // }
-    // else if (kingX < 7 && kingY == 7)
-    // {
-    //     checkX = 3;
-    //     checkY = 2;
-    // }
-    // else if (kingX == 7 && kingY == 7)
-    // {
-    //     checkX = 2;
-    //     checkY = 2;
-    // }
-    // std::cout << checkX << checkY << std::endl;
     for (int i = 0; i < checkX; ++i)
     {
         for (int j = 0; j < checkY; ++j)
@@ -244,7 +222,6 @@ bool ChessBoard::mateAnalysis(const std::string &color)
             {
                 continue;
             }
-            std::cout << i << j << std::endl;
             for (int n = 0; n < 8; ++n)
             {
                 for (int k = 0; k < 8; ++k)
@@ -253,11 +230,9 @@ bool ChessBoard::mateAnalysis(const std::string &color)
                     {
                         if (board[n][k]->getColor() == attackColor)
                         {
-                            std::cout << n << " " << k << std::endl;
                             if (board[n][k]->canMove(i + kingX - 1, j + kingY - 1))
                             {
                                 canMove = false;
-                                std::cout << "cant move  to " << std::endl;
                                 break;
                             }
                         }
@@ -270,7 +245,7 @@ bool ChessBoard::mateAnalysis(const std::string &color)
             }
             if (canMove == true)
             {
-                std::cout<<"false for ";
+                std::cout << "false for ";
                 return false;
             }
         }
@@ -285,4 +260,8 @@ bool ChessBoard::positionStatus(const int &n, const int &m)
         return true;
     }
     return false;
+}
+
+bool mateAfterOnStep(const std::string color){
+    
 }

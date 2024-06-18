@@ -15,7 +15,6 @@ bool King::canMove(int n, int m)
     }
     if (abs(getX() - n) <= 1 && abs(getY() - m) <= 1)
     {
-        if (board->positionStatus(n, m))
             return true;
     }
     return false;
