@@ -23,6 +23,13 @@ Car::~Car()
     delete gearbox;
 }
 
+bool Car::operator==(const Car& c) const {
+    if(this->model == c.model && this->color == c.color && this->year == c.year){
+        return true;
+    }
+    return false;
+}
+
 
 void Car::printInfo() const
 {
