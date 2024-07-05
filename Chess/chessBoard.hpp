@@ -8,7 +8,7 @@ class ChessBoard
 public:
     ChessBoard();
     bool move(int , int , int , int);
-    bool setFigure(Figure& , int , int);
+    void setFigure(Figure& , int , int);
     void showBoard();
     bool mateAnalysis(const std::string& color);//1 - white , 0 - black
     bool mateAfterOneStep(const std::string& color);

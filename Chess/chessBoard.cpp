@@ -16,7 +16,7 @@ ChessBoard::ChessBoard()
     }
 }
 
-bool ChessBoard::setFigure(Figure &f, int n, int m)
+void ChessBoard::setFigure(Figure &f, int n, int m)
 {
     if (n >= 8 || m >= 8)
     {
@@ -135,6 +135,7 @@ bool ChessBoard::move(int x1, int y1, int x2, int y2)
         return false;
     }
     std::cout << "That place is busy" << std::endl;
+    return false;
 }
 
 bool ChessBoard::mateAnalysis(const std::string &color)
@@ -263,5 +264,5 @@ bool ChessBoard::positionStatus(const int &n, const int &m)
 }
 
 bool mateAfterOnStep(const std::string color){
-    
+    return true;
 }
