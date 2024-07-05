@@ -2,6 +2,7 @@
 #include <vector>
 #include <functional>
 #include <cmath>
+#include <algorithm>
 
 bool isPrime(const int& a)
 {

@@ -1,5 +1,6 @@
 #ifndef __Vector__
 #define __Vector__
+#include "exception.hpp"
 
 template<typename T>
 class vector
@@ -21,7 +22,7 @@ public:
     void pop_front();
     void insert(const T& , const int&);
     void reserve(const int&);
-    void resize(const int& , const T&);
+    void resize(const int&);
     T& operator[](const int&);
     T& at(const int&);
     T& front();
@@ -142,7 +143,7 @@ T& vector<T>::at(const int& i)
 {
     if (i >= _size)
     {
-        throw std::out_of_range("Invalid index!");
+        throw mySTL::out_of_range();
     }
     return _arr[i];
 }
@@ -282,7 +283,7 @@ void vector<T>::reserve(const int& newCap)
 {
     if (newCap == _capacity)
     {
-        return
+        return;
     }
     _capacity = newCap;;
     T* tmp = new T[_capacity];
@@ -293,17 +294,18 @@ void vector<T>::reserve(const int& newCap)
     delete[] _arr;
     _arr = tmp;
     tmp = nullptr;
-    _arr[_size] = elem;
-    ++_size;
+
 }
 
 template<typename T>
-void vector<T>::resize(const int& newSize , const T& val = T())
+void vector<T>::resize(const int& newSize)
 {
-    if(newSize == _size){
+    if (newSize == _size)
+    {
         return;
     }
-    if(newSize < _size){
+    if (newSize < _size)
+    {
         _size = newSize;
         return;
     }
@@ -311,12 +313,6 @@ void vector<T>::resize(const int& newSize , const T& val = T())
     {
         reserve(newSize);
     }
-    for (int i = _size; i < newSize; i++)
-    {
-        _arr[i] = val;
-    }
-    
-
 
 }
 
