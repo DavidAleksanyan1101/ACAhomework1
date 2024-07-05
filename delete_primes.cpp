@@ -19,6 +19,7 @@ bool isPrime(const int& a)
     return true;
 }
 
+
 int main()
 {
     std::vector<int> v1{ 12 , 32, 29 , 14 , 3 , 7 , 81 , 45 , 87 , 11 , 90  , 37 };
