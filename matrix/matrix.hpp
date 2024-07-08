@@ -16,14 +16,15 @@ public:
     const Matrix operator*(const Matrix& M);
     Matrix& operator++();
     Matrix operator++(int);
+    T& at(const int& , const int&);
     ~Matrix();
     friend void makeMatrixFile(const std::string& s , int , int);
     // friend void makeMatrixFile(const std::string& s , const Matrix<T>&);
     // friend Matrix<T> readMatrixFile(const std::string&);
-public:
+private:
     void transposeMatrix();
     void printMatrix();
-// private:
+    // private:
     T** matrix = nullptr;
     int n = 0;
     int m = 0;
@@ -34,7 +35,7 @@ template<typename T>
 Matrix<T>::Matrix(const int& _n , const int& _m) : n(_n) , m(_m)
 {
     std::srand(time(0));
-    matrix = new T* [n];
+    matrix = new T * [n];
     for (int i = 0; i < n; ++i)
     {
         matrix[i] = new T[m];
@@ -273,11 +274,11 @@ void makeMatrixFile(const std::string& s , const Matrix<T>& mat)
 }
 
 template<typename T>
-void makeMatrixFile(const std::string& s , int n , int m )
+void makeMatrixFile(const std::string& s , int n , int m)
 {
     std::ofstream of(s);
     Matrix<T> mat(n , m);
-    
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -286,4 +287,13 @@ void makeMatrixFile(const std::string& s , int n , int m )
         }
         of << std::endl;
     }
+}
+
+template<typename T>
+T& Matrix<T>::at(const int&  x , const int& y)
+{
+    if( x >= n || y >= m){
+        throw std::out_of_range("invalid index!");
+    }
+    return matrix[x][y];
 }
