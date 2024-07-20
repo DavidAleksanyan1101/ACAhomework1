@@ -16,7 +16,7 @@ ChessBoard::ChessBoard()
     }
 }
 
-void ChessBoard::setFigure(Figure &f, int n, int m)
+void ChessBoard::setFigure(Figure& f , int n , int m)
 {
     if (n >= 8 || m >= 8)
     {
@@ -106,7 +106,7 @@ void ChessBoard::showBoard()
     }
 }
 
-bool ChessBoard::move(int x1, int y1, int x2, int y2)
+bool ChessBoard::move(int x1 , int y1 , int x2 , int y2)
 {
     if (x1 >= 8 || y1 >= 8 || x2 >= 8 || y2 >= 8)
     {
@@ -123,7 +123,7 @@ bool ChessBoard::move(int x1, int y1, int x2, int y2)
     }
     if (board[x2][y2] == nullptr)
     {
-        if (board[x1][y1]->canMove(x2, y2) == true)
+        if (board[x1][y1]->canMove(x2 , y2) == true)
         {
             board[x2][y2] = board[x1][y1];
             board[x2][y2]->setX(x2);
@@ -138,7 +138,7 @@ bool ChessBoard::move(int x1, int y1, int x2, int y2)
     return false;
 }
 
-bool ChessBoard::mateAnalysis(const std::string &color)
+bool ChessBoard::mateAnalysis(const std::string& color)
 {
     std::string attackColor;
     std::string mateColor;
@@ -155,9 +155,9 @@ bool ChessBoard::mateAnalysis(const std::string &color)
 
     int kingX = 0;
     int kingY = 0;
+    bool kingFound = false;
     for (int i = 7; i >= 0; --i)
     {
-        bool kingFound = false;
         for (int j = 7; j >= 0; --j)
         {
             if (board[i][j] != nullptr)
@@ -176,6 +176,10 @@ bool ChessBoard::mateAnalysis(const std::string &color)
             break;
         }
     }
+    if (kingFound == false)
+    {
+        throw std::string("King isn't found");
+    }
     // std::cout << kingX << kingY << std::endl;
     bool check = false;
     for (int i = 0; i < 8; ++i)
@@ -186,7 +190,7 @@ bool ChessBoard::mateAnalysis(const std::string &color)
             {
                 if (board[i][j]->getColor() == attackColor)
                 {
-                    if (board[i][j]->canMove(kingX, kingY))
+                    if (board[i][j]->canMove(kingX , kingY))
                     {
                         check = true;
                         break;
@@ -231,7 +235,7 @@ bool ChessBoard::mateAnalysis(const std::string &color)
                     {
                         if (board[n][k]->getColor() == attackColor)
                         {
-                            if (board[n][k]->canMove(i + kingX - 1, j + kingY - 1))
+                            if (board[n][k]->canMove(i + kingX - 1 , j + kingY - 1))
                             {
                                 canMove = false;
                                 break;
@@ -254,7 +258,7 @@ bool ChessBoard::mateAnalysis(const std::string &color)
     return true;
 }
 
-bool ChessBoard::positionStatus(const int &n, const int &m)
+bool ChessBoard::positionStatus(const int& n , const int& m)
 {
     if (board[n][m] == nullptr)
     {
@@ -263,6 +267,94 @@ bool ChessBoard::positionStatus(const int &n, const int &m)
     return false;
 }
 
-bool mateAfterOnStep(const std::string color){
-    return true;
+bool ChessBoard::mateInOneStep(const std::string& color)
+{
+    std::string attackColor;
+    std::string mateColor;
+    if (color == "black")
+    {
+        attackColor = "white";
+        mateColor = "black";
+    }
+    else
+    {
+        attackColor = "black";
+        mateColor = "white";
+    }
+
+    int kingX = 0;
+    int kingY = 0;
+    bool kingFound = false;
+    for (int i = 7; i >= 0; --i)
+    {
+        for (int j = 7; j >= 0; --j)
+        {
+            if (board[i][j] != nullptr)
+            {
+                if (board[i][j]->getColor() == mateColor && board[i][j]->getName() == "King")
+                {
+                    kingX = board[i][j]->getX();
+                    kingY = board[i][j]->getY();
+                    kingFound = true;
+                    break;
+                }
+            }
+        }
+        if (kingFound == true)
+        {
+            break;
+        }
+    }
+    if (kingFound == false)
+    {
+        throw std::string("King isn't found");
+    }
+    std::cout << kingX << kingY << std::endl;
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if (board[i][j] != nullptr)
+            {
+                if (board[i][j]->getColor() == attackColor)
+                {
+                    std::cout << board[i][j]->getName() << std::endl;
+                    std::cout << board[i][j]->getColor() << std::endl;
+                    for (int k = 0; k < 8; k++)
+                    {
+                        for (int n = 0; n < 8; n++)
+                        {
+                            if (k == kingX && n == kingY)
+                            {
+                                continue;
+                            }
+                            if (board[k][n] != nullptr && board[k][n]->getColor() == attackColor)
+                            {
+                                continue;
+                            }
+                            if (board[i][j]->canMove(k , n))
+                            {
+                                std::cout << k << " " << n << std::endl;
+                                // std::string tempName;
+                                // if (board[k][n] != nullptr)
+                                // {
+                                //     tempName = board[k][n]->getName();
+                                // }
+                                std::cout << i << " " << j << std::endl;
+
+                                this->move(i , j , k , n);
+                                // if(mateAnalysis(mateColor)){
+                                //     std::cout<<board[k][n]->getName()<<"to "<<k<<" "<<n<<std::endl;
+                                //     return true;
+                                // }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 }

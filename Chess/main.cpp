@@ -24,10 +24,10 @@ int main()
     b1.setFigure(WK , 2 , 7);
     // b1.setFigure(WR , 1 , 2);
     b1.setFigure(WB , 4 , 4);
-    b1.setFigure(WQ , 1 , 7);
+    b1.setFigure(WQ , 7 , 2);
     // b1.setFigure(Wk , 3 , 5);
-    std::cout<<WB.canMove(1,7)<<std::endl;
-    b1.showBoard();
+    std::cout<<WK.canMove(1,6)<<std::endl;
+    // b1.move(2,7,1,6);
 
     // b1.setFigure(BK , 5 , 7);
     // b1.setFigure(WK , 0 , 4);
@@ -46,7 +46,7 @@ int main()
     // b1.showBoard();
 
 
-    if (b1.mateAnalysis("black"))
+    if (b1.mateInOneStep("black"))
     {
         std::cout << "checkmate" << std::endl;
     }
@@ -55,5 +55,6 @@ int main()
         std::cout << "Isn't checkmate" << std::endl;
     }
 
+    b1.showBoard();
     return 0;
 }

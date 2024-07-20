@@ -19,7 +19,7 @@ public:
     void setY(int);
     void setBoard(ChessBoard *b);
 protected:
-    ChessBoard *board;
+    ChessBoard *f_board;
 private:
     std::string _color;
     std::string _name;
