@@ -21,4 +21,5 @@ bool Knight::canMove(int n, int m)
     {
         return true;
     }
+    return false;
 }

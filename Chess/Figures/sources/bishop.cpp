@@ -20,7 +20,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < n - getX(); ++i)
             {
-                if (!(board->positionStatus(getX() + i, getY() + i)))
+                if (!(f_board->positionStatus(getX() + i, getY() + i)))
                 {
                     return false;
                 }
@@ -31,7 +31,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < getX() - n; ++i)
             {
-                if (!(board->positionStatus(n + i, m + i)))
+                if (!(f_board->positionStatus(n + i, m + i)))
                 {
                     return false;
                 }
@@ -45,7 +45,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < n - getX(); ++i)
             {
-                if (!(board->positionStatus(getX() + i, getY() - i)))
+                if (!(f_board->positionStatus(getX() + i, getY() - i)))
                 {
                     return false;
                 }
@@ -56,7 +56,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < n - getX(); ++i)
             {
-                if (!(board->positionStatus(n - i, m + i)))
+                if (!(f_board->positionStatus(n - i, m + i)))
                 {
                     return false;
                 }
@@ -64,4 +64,5 @@ bool Bishop::canMove(int n, int m)
             return true;
         }
     }
+    return false;
 }

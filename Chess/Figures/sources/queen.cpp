@@ -115,4 +115,5 @@ bool Queen::canMove(int n, int m)
             }
         }
     }
+    return false;
 }

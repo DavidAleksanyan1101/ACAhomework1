@@ -25,5 +25,5 @@ void Figure::setY(int a){
     y = a;
 }
 void Figure::setBoard(ChessBoard* b){
-    board = b;
+    f_board = b;
 }

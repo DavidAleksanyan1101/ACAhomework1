@@ -255,7 +255,7 @@ bool ChessBoard::mateAnalysis(const std::string& color)
             }
         }
     }
-    return true;
+    return false;
 }
 
 bool ChessBoard::positionStatus(const int& n , const int& m)
@@ -344,10 +344,12 @@ bool ChessBoard::mateInOneStep(const std::string& color)
                                 std::cout << i << " " << j << std::endl;
 
                                 this->move(i , j , k , n);
-                                // if(mateAnalysis(mateColor)){
-                                //     std::cout<<board[k][n]->getName()<<"to "<<k<<" "<<n<<std::endl;
-                                //     return true;
-                                // }
+                                if (mateAnalysis(mateColor))
+                                {
+                                    std::cout << board[k][n]->getName() << "to " << k << " " << n << std::endl;
+                                    return true;
+                                }
+                                this->move(k , n , i , j);
                             }
                         }
                     }
@@ -355,6 +357,6 @@ bool ChessBoard::mateInOneStep(const std::string& color)
             }
         }
     }
-
+    return true;
 
 }

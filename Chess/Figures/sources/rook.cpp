@@ -19,7 +19,7 @@ bool Rook::canMove(int n, int m)
         {
             for (int i = getY() - 1; i > m; --i)
             {
-                if (!(board->positionStatus(n, i)))
+                if (!(f_board->positionStatus(n, i)))
                 {
                     return false;
                 }
@@ -29,7 +29,7 @@ bool Rook::canMove(int n, int m)
         {
             for (int i = getY() + 1; i < m; ++i)
             {
-                if (!(board->positionStatus(n, i)))
+                if (!(f_board->positionStatus(n, i)))
                 {
                     return false;
                 }
@@ -43,7 +43,7 @@ bool Rook::canMove(int n, int m)
         {
             for (int i = getX() - 1; i > n; --i)
             {
-                if (!(board->positionStatus(i, m)))
+                if (!(f_board->positionStatus(i, m)))
                 {
                     return false;
                 }
@@ -53,7 +53,7 @@ bool Rook::canMove(int n, int m)
         {
             for (int i = getX() + 1; i < n; ++i)
             {
-                if (!(board->positionStatus(i, m)))
+                if (!(f_board->positionStatus(i, m)))
                 {
                     return false;
                 }
@@ -61,4 +61,5 @@ bool Rook::canMove(int n, int m)
             return true;
         }
     }
+    return false;
 }
