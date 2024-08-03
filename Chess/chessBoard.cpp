@@ -29,7 +29,7 @@ void ChessBoard::setFigure(Figure& f , char ch , int n)
     }
     if (board[n][m] != nullptr)
     {
-        throw std::invalid_argument("That place is busy , can't set! " );
+        throw std::invalid_argument("That place is busy , can't set! ");
     }
     if (f.getName() == "King")
     {
@@ -37,19 +37,19 @@ void ChessBoard::setFigure(Figure& f , char ch , int n)
         {
             for (int j = 0; j < 3; j++)
             {
-                    if (i + n - 1 < 0 || i + n - 1 > 7)
-                    {
-                        continue;
-                    }
-                    if (j + m - 1 < 0 || j + m - 1 > 7)
-                    {
-                        continue;
-                    }
+                if (i + n - 1 < 0 || i + n - 1 > 7)
+                {
+                    continue;
+                }
+                if (j + m - 1 < 0 || j + m - 1 > 7)
+                {
+                    continue;
+                }
 
-                    if (board[i + n - 1][j + m - 1] != nullptr && board[i + n - 1][j + m - 1]->getName() == "King")
-                    {
-                        throw std::logic_error("there is a king near that place!!!");
-                    }
+                if (board[i + n - 1][j + m - 1] != nullptr && board[i + n - 1][j + m - 1]->getName() == "King")
+                {
+                    throw std::logic_error("there is a king near that place!!!");
+                }
             }
         }
         if (f.getColor() == "white")
@@ -80,7 +80,7 @@ void ChessBoard::showBoard()
     std::cout << "  -------------------------------------------------" << std::endl;
     for (int i = 0; i < 8; ++i)
     {
-        std::cout<< 8 - i <<" ";
+        std::cout << 8 - i << " ";
         std::cout << "|";
         for (int j = 0; j < 8; ++j)
         {
@@ -148,7 +148,7 @@ void ChessBoard::showBoard()
         std::cout << std::endl;
         std::cout << "  -------------------------------------------------" << std::endl;
     }
-    std::cout<<"     A     B     C     D     E     F     G     H"<<std::endl<<std::endl;
+    std::cout << "     A     B     C     D     E     F     G     H" << std::endl << std::endl;
 
 }
 
@@ -205,10 +205,10 @@ bool ChessBoard::move(int x1 , int y1 , int x2 , int y2)
             board[x1][y1] = nullptr;
             return true;
         }
-        std::cout << "Can't move to that place" << std::endl;
+        // std::cout << "Can't move to that place" << std::endl;
         return false;
     }
-    std::cout << "That place is busy" << std::endl;
+    // std::cout << "That place is busy" << std::endl;
     return false;
 }
 
@@ -304,35 +304,40 @@ bool ChessBoard::mateAnalysis(const std::string& color)
             {
                 continue;
             }
-            for (int n = 0; n < 8; ++n)
+            if (move(kingX , kingY , i , j))
             {
-                for (int k = 0; k < 8; ++k)
+                for (int n = 0; n < 8; ++n)
                 {
-                    if (board[n][k] != nullptr)
+                    for (int k = 0; k < 8; ++k)
                     {
-                        if (board[n][k]->getColor() == attackColor)
+                        if (board[n][k] != nullptr)
                         {
-                            if (board[n][k]->canMove(i + kingX - 1 , j + kingY - 1))
+                            if (board[n][k]->getColor() == attackColor)
                             {
-                                canMove = false;
-                                break;
+                                if (board[n][k]->canMove(i + kingX - 1 , j + kingY - 1))
+                                {
+                                    canMove = false;
+                                    break;
+                                }
                             }
                         }
                     }
+                    if (canMove == false)
+                    {
+                        break;
+                    }
                 }
-                if (canMove == false)
+                if (canMove == true)
                 {
-                    break;
+                    // std::cout << "false for " << std::endl;
+                    move(i , j , kingX , kingY);
+                    return false;
                 }
-            }
-            if (canMove == true)
-            {
-                std::cout << "false for " << std::endl;
-                return false;
+                move(i , j , kingX , kingY);
             }
         }
     }
-    // return false;
+    return true;
 }
 
 bool ChessBoard::positionStatus(const int& n , const int& m)
@@ -358,7 +363,10 @@ bool ChessBoard::mateInOneStep(const std::string& color)
         attackColor = "black";
         mateColor = "white";
     }
-
+    if(mateAnalysis(mateColor)){
+        std::cout<<"it is already mate"<<std::endl;
+        return true;
+    }
     int kingX = 0;
     int kingY = 0;
     bool kingFound = false;
@@ -396,8 +404,8 @@ bool ChessBoard::mateInOneStep(const std::string& color)
             {
                 if (board[i][j]->getColor() == attackColor)
                 {
-                    std::cout << board[i][j]->getName() << std::endl;
-                    std::cout << board[i][j]->getColor() << std::endl;
+                    // std::cout << board[i][j]->getName() << std::endl;
+                    // std::cout << board[i][j]->getColor() << std::endl;
                     for (int k = 0; k < 8; k++)
                     {
                         for (int n = 0; n < 8; n++)
@@ -412,22 +420,24 @@ bool ChessBoard::mateInOneStep(const std::string& color)
                             }
                             if (board[i][j]->canMove(k , n))
                             {
-                                std::cout << k << " " << n << std::endl;
+                                // std::cout << k << " " << n << std::endl;
                                 // std::string tempName;
                                 // if (board[k][n] != nullptr)
                                 // {
                                 //     tempName = board[k][n]->getName();
                                 // }
                                 // std::cout << i << " " << j << std::endl;
-                                this->move(i , j , k , n);
-                                // std::cout<<"move"<<std::endl;
-                                if (mateAnalysis(mateColor))
+                                if (this->move(i , j , k , n))
                                 {
-                                    std::cout << board[k][n]->getName() << " to " << k << " " << n << std::endl;
-                                    return true;
+                                    // std::cout<<"move"<<std::endl;
+                                    if (mateAnalysis(mateColor))
+                                    {
+                                        std::cout << board[k][n]->getName() << " to " << char(n + 65) << "" << 8 - k << std::endl;
+                                        return true;
+                                    }
+                                    this->move(k , n , i , j);
                                 }
                                 // std::cout<<"reverse move"<<std::endl;
-                                this->move(k , n , i , j);
                             }
                         }
                     }
@@ -435,4 +445,8 @@ bool ChessBoard::mateInOneStep(const std::string& color)
             }
         }
     }
+    return false;
 }
+
+
+

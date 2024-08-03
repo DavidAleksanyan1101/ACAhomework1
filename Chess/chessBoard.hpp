@@ -12,6 +12,7 @@ public:
     void showBoard();
     bool mateAnalysis(const std::string& color);//1 - white , 0 - black
     bool mateInOneStep(const std::string& color);
+    bool mateInTwoStep(const std::string& color);
     bool positionStatus(const int& ,const int&);
     friend class King;
 private:

@@ -58,8 +58,8 @@ bool Rook::canMove(int n , int m)
                     return false;
                 }
             }
-            return true;
         }
+        return true;
     }
     return false;
 }
