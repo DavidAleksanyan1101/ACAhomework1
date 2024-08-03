@@ -54,9 +54,9 @@ bool Bishop::canMove(int n, int m)
         }
         if (getX() > n)
         {
-            for (int i = 1; i < n - getX(); ++i)
+            for (int i = 1; i < getX() - n; ++i)
             {
-                if (!(f_board->positionStatus(n - i, m + i)))
+                if (!(f_board->positionStatus(n + i, m - i)))
                 {
                     return false;
                 }

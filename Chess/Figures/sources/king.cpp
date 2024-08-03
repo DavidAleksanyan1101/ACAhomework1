@@ -15,16 +15,17 @@ bool King::canMove(int n , int m)
     }
     if (abs(getX() - n) <= 1 && abs(getY() - m) <= 1)
     {
-        for (int i = 0; i < 3; ++i) 
-        {
-            for (int j = 0; j < 0; ++j)
-            {
-                if (f_board->board[i + this->getX() - 1][j + this->getY() - 1]->getName() == "King" || f_board->board[i + this->getX() - 1][j + this->getY() - 1]->getColor() == this->getColor())
-                {
-                    return false;
-                }
-            }
-        }
+        // for (int i = 0; i < 3; ++i) 
+        // {
+        //     for (int j = 0; j < 0; ++j)
+        //     {
+        //         // f_board->board[i + this->getX() - 1][j + this->getY() - 1]->getName() == "King"
+        //         if ( f_board->board[i + this->getX() - 1][j + this->getY() - 1]->getColor() == this->getColor())
+        //         {
+        //             return false;
+        //         }
+        //     }
+        // }
         return true;
     }
     return false;
