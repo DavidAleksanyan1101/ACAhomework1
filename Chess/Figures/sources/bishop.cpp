@@ -1,9 +1,9 @@
 #include "../headers/bishop.hpp"
 #include "../../chessBoard.hpp"
 
-Bishop::Bishop(const std::string &color) : Figure(color, "Bishop") {}
+Bishop::Bishop(const std::string& color) : Figure(color , "Bishop") {}
 
-bool Bishop::canMove(int n, int m)
+bool Bishop::canMove(int n , int m)
 {
     if (n >= 8 || m >= 8 || n < 0 || m < 0)
     {
@@ -13,14 +13,14 @@ bool Bishop::canMove(int n, int m)
     {
         return false;
     }
-
     if (getX() - n == getY() - m)
     {
+
         if (getX() < n)
         {
             for (int i = 1; i < n - getX(); ++i)
             {
-                if (!(f_board->positionStatus(getX() + i, getY() + i)))
+                if (!(f_board->positionStatus(getX() + i , getY() + i)))
                 {
                     return false;
                 }
@@ -31,7 +31,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < getX() - n; ++i)
             {
-                if (!(f_board->positionStatus(n + i, m + i)))
+                if (!(f_board->positionStatus(n + i , m + i)))
                 {
                     return false;
                 }
@@ -45,8 +45,9 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < n - getX(); ++i)
             {
-                if (!(f_board->positionStatus(getX() + i, getY() - i)))
+                if (!(f_board->positionStatus(getX() + i , getY() - i)))
                 {
+
                     return false;
                 }
             }
@@ -56,7 +57,7 @@ bool Bishop::canMove(int n, int m)
         {
             for (int i = 1; i < getX() - n; ++i)
             {
-                if (!(f_board->positionStatus(n + i, m - i)))
+                if (!(f_board->positionStatus(n + i , m - i)))
                 {
                     return false;
                 }

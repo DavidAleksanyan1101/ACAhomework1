@@ -4,42 +4,68 @@
 
 int main()
 {
-    
+
     ChessBoard b1;
     King BK("black");
     Queen BQ("black");
     King WK("white");
     Rook BR("black");
     Rook WR("white");
-    Bishop WB("white");
+    Bishop WB1("white");
+    Bishop WB2("white");
     Bishop BB("black");
     Queen WQ("white");
     Knight Wn("white");
 
-    // b1.setFigure(WB , 1 , 4);
-    // b1.setFigure(BQ , 0 , 0);
-    // b1.setFigure(BR , 0 , 5);
-    b1.setFigure(WR , 'f' , 1);
-    // b1.setFigure(WR , 3 , 7);
-    b1.setFigure(BK , 'b' , 8);
-    b1.setFigure(WK , 'b' , 6);
-    // b1.setFigure(Wk , 6 , 2);
-    // b1.setFigure(Wk , 6 , 4);
-    // b1.setFigure(WK , 1 , 4);
-    // b1.setFigure(Wn , 1 , 4);
+    //TEST #1
+    // b1.setFigure(BK , 'b' , 5);
+    // b1.setFigure(WQ , 'd' , 8);
+    // b1.setFigure(WR , 'c' , 3);
+    // b1.setFigure(Wn , 'e' , 5);
+    // b1.setFigure(WK , 'e' , 4);
 
-    // std::cout<<int('A')<<std::endl;
+    // TEST#2
+    // b1.setFigure(BK , 'e' , 4);
+    // b1.setFigure(WQ , 'd' , 1);
+    // b1.setFigure(WR , 'g' , 6);
+    // b1.setFigure(Wn , 'f' , 3);
+    // b1.setFigure(WK , 'd' , 2);
+
+
+    //TEST #3 
+    // b1.setFigure(BK , 'e' , 4);
+    // b1.setFigure(WQ , 'd' , 1);
+    // b1.setFigure(WR , 'g' , 3);
+    // b1.setFigure(Wn , 'f' , 3);
+    // b1.setFigure(WK , 'd' , 2);
+
+    //TEST #4
+    b1.setFigure(BK , 'e' , 4);
+    b1.setFigure(WQ , 'B' , 2);
+    b1.setFigure(WB1 , 'A' , 1);
+    b1.setFigure(WB2 , 'e' , 8);
+    b1.setFigure(WK , 'b' , 5);
+
+
     b1.showBoard();
-   
 
-    if (b1.mateInOneStep("black"))
+    try
     {
-        std::cout <<"\033[32m"<< "checkmate"<<"\033[0m"<< std::endl;
+        if (b1.mateInTwoStep("black"))
+        {
+            std::cout << "\033[32m" << "checkmate" << "\033[0m" << std::endl;
+        }
+        else
+        {
+            std::cout << "Isn't checkmate" << std::endl;
+        }
     }
-    else
+    catch (const std::string& e)
     {
-        std::cout << "Isn't checkmate" << std::endl;
+        std::cerr << e << '\n';
     }
+
+
 
     // b1.showBoard();
     return 0;
